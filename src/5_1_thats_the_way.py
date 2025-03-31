@@ -13,7 +13,7 @@ def search_in_folder(dir, phrase):
 
             
 
-def main():
+def thats_the_way():
     """
     This function prompts the user for a directory and a phrase, then searches for files in the directory that contain the phrase.
     """

@@ -15,7 +15,7 @@ def random_date_from_range(start_date="2023-07-10", end_date="2023-07-10"):
     except ValueError:
         print("Try YYYY-MM-DD as format for you")
 
-def main():
+def no_vinnigrette():
     if len(sys.argv) == 3: # if you want to work it as cli tool
         start_date = sys.argv[1]
         end_date = sys.argv[2]
