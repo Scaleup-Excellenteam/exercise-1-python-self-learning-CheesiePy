@@ -28,4 +28,4 @@ def thats_the_way():
         print(f"No files found containing '{phrase}'.")
 
 if __name__ == "__main__":
-    main()
+    thats_the_way()
