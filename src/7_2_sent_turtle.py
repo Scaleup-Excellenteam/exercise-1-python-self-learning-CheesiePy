@@ -1,0 +1,94 @@
+"""
+צָב שָׁלוּחַ
+ממשו שתי פעולות נוספות למחלקת PostOffice:
+הפעולה read_inbox תקבל כפרמטרים את שם המשתמש ואת מספר ההודעות שהוא מעוניין לקרוא (נקרא לה 
+).
+היא תחזיר את 
+ ההודעות הראשונות בתיבת הדואר הנכנס של המשתמש.
+אם לא הועבר מספר הודעות, החזירו את כל ההודעות בתיבת הדואר הנכנס של המשתמש.
+ההודעות יסומנו כנקראו ולא יוחזרו למשתמש בקריאה הבאה.
+הפעולה search_inbox תקבל כפרמטרים שם משתמש ומחרוזת.
+היא תחזיר כרשימה את כל ההודעות שמכילות את המחרוזת, בכותרת שלהן או בגופן.
+חלק ממטרת התרגיל היא תרגול היכולת שלכם להיכנס לקוד קיים.
+נסו לשנות את הקוד הקיים במידה, והסבירו את השינויים שלכם אם לדעתכם עולה צורך כזה.
+ודאו שהקוד שלכם מתועד היטב.
+"""
+
+
+class PostOffice:
+    """A Post Office class. Allows users to message each other.
+
+    :ivar int message_id: Incremental id of the last message sent.
+    :ivar dict boxes: Users' inboxes.
+
+    :param list usernames: Users for which we should create PO Boxes.
+    """
+
+    def __init__(self, usernames):
+        self.message_id = 0
+        self.boxes = {user: [] for user in usernames}
+
+        
+    def send_message(self, sender, recipient, message_body, urgent=False):
+        """Send a message to a recipient.
+
+        :param str sender: The message sender's username.
+        :param str recipient: The message recipient's username.
+        :param str message_body: The body of the message.
+        :param urgent: The urgency of the message.
+        :type urgent: bool, optional
+        :return: The message ID, auto incremented number.
+        :rtype: int
+        :raises KeyError: if the recipient does not exist.
+        """
+        user_box = self.boxes[recipient]
+        self.message_id = self.message_id + 1
+        message_details = {
+            'id': self.message_id,
+            'body': message_body,
+            'sender': sender,
+        }
+        if urgent:
+            user_box.insert(0, message_details)
+        else:
+            user_box.append(message_details)
+        return self.message_id
+
+    def read_inbox(self, username, num_messages=None):
+        """Read the inbox of a user.
+
+        :param str username: The user's username.
+        :param int num_messages: The number of messages to read.
+        :return: List of messages read.
+        :rtype: list
+        """
+        user_box = self.boxes[username]
+        if num_messages is None:
+            num_messages = len(user_box)
+        messages = user_box[:num_messages]
+        del user_box[:num_messages]
+        return messages
+    
+    def search_inbox(self, username, search_string):
+        """Search the inbox of a user for a specific string.
+
+        :param str username: The user's username.
+        :param str search_string: The string to search for.
+        :return: List of messages containing the search string.
+        :rtype: list
+        """
+        user_box = self.boxes[username]
+        messages = [message for message in user_box if search_string in message['body']]
+        return messages
+
+
+def main():
+    po = PostOffice(['Alice', 'Bob', 'Charlie'])
+    po.send_message('Alice', 'Bob', 'Hello Bob!')
+    po.send_message('Bob', 'Alice', 'Hi Alice!')
+    po.send_message('Charlie', 'Alice', 'Hey Alice!', urgent=True)
+    print(po.read_inbox('Alice'))
+    print(po.search_inbox('Alice', 'Hello'))
+
+if __name__ == "__main__":
+    main()
