@@ -13,12 +13,12 @@ def search_in_folder(dir, phrase):
 
             
 
-def thats_the_way():
+def thats_the_way(dir, phrase):
     """
     This function prompts the user for a directory and a phrase, then searches for files in the directory that contain the phrase.
     """
-    dir = input("Enter the directory to search: ")
-    phrase = input("Enter the phrase to search for: ")
+    # dir = input("Enter the directory to search: ")
+    # phrase = input("Enter the phrase to search for: ")
     files = search_in_folder(dir, phrase)
     if files:
         print(f"Files containing '{phrase}':")
