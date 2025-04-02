@@ -3,8 +3,7 @@ def cup_of_join(*args, sep='-'):
     res = []
     for i in range(len(args)):
         res.extend(args[i])
-        if i != len(args) - 1:
-            res.append(sep)
+        res.append(sep)
     return res
 
 
