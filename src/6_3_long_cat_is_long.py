@@ -8,6 +8,8 @@ The only difference is that there is no cat.
 """
 
 def count_words(text):
+    """
+    Count the number of letters in each word in the given text."""
     words = (word.strip(string.punctuation) for word in text.split())
     return {word: len(word) for word in words if word.isalpha()}
 

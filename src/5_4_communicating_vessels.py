@@ -1,6 +1,7 @@
 from typing import Iterable, Any, List
 
 def interleave(*args: Iterable[Any]) -> List[Any]:
+    """Interleave multiple iterables."""
     res = []
     max_len = max(len(arg) for arg in args)
 
