@@ -11,7 +11,7 @@ def interleave(*args: Iterable[Any]) -> List[Any]:
     
     return res
 
-def generate_interleave(*args: Iterable[Any]) -> List[Any]:
+def generator_interleave(*args: Iterable[Any]) -> Iterable[Any]:
     """Generate interleaved elements from multiple iterables using a generator."""
     max_len = max(len(arg) for arg in args)
 
