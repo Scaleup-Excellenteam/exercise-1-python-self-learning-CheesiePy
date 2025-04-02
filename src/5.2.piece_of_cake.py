@@ -1,4 +1,4 @@
-def get_recipe_price(prices, optionals=None, **kwargs):
+def piece_of_cake(prices, optionals=None, **kwargs):
     """
     calc the total cost on the recipe
     """
@@ -15,9 +15,9 @@ def get_recipe_price(prices, optionals=None, **kwargs):
 
 
 def test():
-    get_recipe_price({'chocolate': 18, 'milk': 8}, optionals=['milk'], chocolate=300)
-    get_recipe_price({'chocolate': 18, 'milk': 8}, chocolate=200, milk=100)
-    get_recipe_price({})
+    piece_of_cake({'chocolate': 18, 'milk': 8}, optionals=['milk'], chocolate=300)
+    piece_of_cake({'chocolate': 18, 'milk': 8}, chocolate=200, milk=100)
+    piece_of_cake({})
 
 if __name__=="__main__":
     test()
