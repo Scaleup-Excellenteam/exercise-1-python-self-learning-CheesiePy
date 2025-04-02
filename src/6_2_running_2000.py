@@ -1,7 +1,8 @@
 
 import time 
 def timer(func, *args, **kwargs):
-
+    """
+    A decorator to measure the execution time of a function."""
     start = time.time()
 
     func(*args, **kwargs)

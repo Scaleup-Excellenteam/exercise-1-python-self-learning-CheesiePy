@@ -1,4 +1,5 @@
 def join(*args, sep='-'):
+    """Join multiple iterables with a separator."""
     res = []
     for i in range(len(args)):
         res.extend(args[i])

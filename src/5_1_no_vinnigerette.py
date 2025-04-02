@@ -16,6 +16,7 @@ def random_date_from_range(start_date="2023-07-10", end_date="2023-07-10"):
         print("Try YYYY-MM-DD as format for you")
 
 def no_vinnigrette():
+    """This function generates a random date between two given dates and checks if the date is a Monday."""
     if len(sys.argv) == 3: # if you want to work it as cli tool
         start_date = sys.argv[1]
         end_date = sys.argv[2]
@@ -34,5 +35,5 @@ def no_vinnigrette():
         print(f'{random_date}')
 
 if __name__ == "__main__":
-    main()
+    no_vinnigrette()
 
