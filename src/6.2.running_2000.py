@@ -1,6 +1,6 @@
 
 import time 
-def timer(func, *args, **kwargs):
+def running_2000(func, *args, **kwargs):
     """
     A decorator to measure the execution time of a function."""
     start = time.time()
@@ -16,9 +16,9 @@ def timer(func, *args, **kwargs):
 
 
 def main():
-    timer(print, "Hello") #, תחזיר הפונקציה את משך זמן הביצוע של print("Hello").
-    timer(zip, [1, 2, 3], [4, 5, 6])# , תחזיר הפונקציה את משך זמן הביצוע של zip([1, 2, 3], [4, 5, 6]).
-    timer("Hi {name}".format, name="Bug") # , תחזיר הפונקציה את משך זמן הביצוע של "Hi {name}".format(name="Bug")
+    running_2000(print, "Hello") #, תחזיר הפונקציה את משך זמן הביצוע של print("Hello").
+    running_2000(zip, [1, 2, 3], [4, 5, 6])# , תחזיר הפונקציה את משך זמן הביצוע של zip([1, 2, 3], [4, 5, 6]).
+    running_2000("Hi {name}".format, name="Bug") # , תחזיר הפונקציה את משך זמן הביצוע של "Hi {name}".format(name="Bug")
 
 if __name__=="__main__":
     main()

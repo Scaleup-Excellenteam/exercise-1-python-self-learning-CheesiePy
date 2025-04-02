@@ -1,7 +1,7 @@
 import string
 
 
-def count_words(text):
+def long_cat_is_long(text):
     """
     Count the number of letters in each word in the given text."""
     words = (word.strip(string.punctuation) for word in text.split())
@@ -17,7 +17,7 @@ def main():
         The only difference is that there is no cat."""
 
 
-    print(count_words(text))
+    print(long_cat_is_long(text))
 
 if __name__=="__main__":
     main()
