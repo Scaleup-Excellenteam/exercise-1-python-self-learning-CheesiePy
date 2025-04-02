@@ -25,15 +25,36 @@ def gen_solution_files(files):
             pass
     print(f"Created {len(files)} empty solution files in {dir}")
 
+def change_files_names(dir, files, sep):
+    """
+    if this is the file name 5_1_thats_the_way.py change it to 5.1.thats_the_way.py 
+    """
+    for file in files:
+        if file.endswith(".py"):
+            new_file = file.replace("_", sep)
+            os.rename(os.path.join(dir, file), os.path.join(dir, new_file))
+            print(f"Renamed {file} to {new_file}")
+    
 
 def main():
     """
     Main function to generate empty solution files.
     """
+
+
+    # Get the directory of the current file
+    # dir = os.path.dirname(__file__)
+    # dir = dir.replace('src', 'tests')
+    # files = get_files_name(dir)
+    # gen_solution_files(dir, files)
+
+
+    # Change the file names to the new format
     dir = os.path.dirname(__file__)
-    dir = dir.replace('src', 'tests')
-    files = get_files_name(dir)
-    gen_solution_files(dir, files)
+    files = os.listdir(dir)
+    sep = "."
+    change_files_names(dir, files, sep)
+    
 if __name__ == "__main__":
     main()
     
