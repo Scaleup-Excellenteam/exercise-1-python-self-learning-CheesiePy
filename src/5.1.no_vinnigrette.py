@@ -35,5 +35,5 @@ def no_vinnigrete():
         print(f'{random_date}')
 
 if __name__ == "__main__":
-    no_vinnigrette()
+    no_vinnigrete()
 
