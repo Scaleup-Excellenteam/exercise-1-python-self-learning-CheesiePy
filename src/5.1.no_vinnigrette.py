@@ -29,14 +29,20 @@ def no_vinnigrete():
     - If the date is a Monday, it prints "No Vinnigerette".
     - If the date is not a Monday, it prints the date.
     Args:
-    - None
+    - None (function does not take any arguments but reads from standard input).
     Returns:
     - str: A message indicating whether the date is a Monday or not.
         """
-    if len(sys.argv) == 3: # if you want to work it as cli tool
-        start_date = sys.argv[1]
-        end_date = sys.argv[2]
-        random_date = random_date_from_range(start_date, end_date)
+    # if len(sys.argv) == 3: # if you want to work it as cli tool
+    #     start_date = sys.argv[1]
+    #     end_date = sys.argv[2]
+    #     random_date = random_date_from_range(start_date, end_date)
+    
+    
+    # read from standard input
+    random_date = None
+
+
     # if random date is Monday
     while random_date == None:
         start_date = input("Please Enter Start Date in Valid format Date YYYY-MM-DD: ")
