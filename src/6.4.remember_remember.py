@@ -5,7 +5,11 @@ from typing import List
 
 def remember_remember(path: str) -> str:
     """Reads a black and white image and returns the characters represented by non-white pixels."""
-    img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+    with open(path, 'rb') as f:
+        if not f.read():
+            raise ValueError("File is empty or not a valid image.")
+    
+        img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
     if img is None:
         raise ValueError("Could not read the image file.")
     height, width = img.shape

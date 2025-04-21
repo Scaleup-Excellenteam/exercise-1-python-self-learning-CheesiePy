@@ -36,9 +36,9 @@ def running_2000(func, *args, **kwargs):
 
 
 def main():
-    running_2000(print, "Hello") #, תחזיר הפונקציה את משך זמן הביצוע של print("Hello").
-    running_2000(zip, [1, 2, 3], [4, 5, 6])# , תחזיר הפונקציה את משך זמן הביצוע של zip([1, 2, 3], [4, 5, 6]).
-    running_2000("Hi {name}".format, name="Bug") # , תחזיר הפונקציה את משך זמן הביצוע של "Hi {name}".format(name="Bug")
+    print(running_2000(print, "Hello")) #, תחזיר הפונקציה את משך זמן הביצוע של print("Hello").
+    print(running_2000(zip, [1, 2, 3], [4, 5, 6]))# , תחזיר הפונקציה את משך זמן הביצוע של zip([1, 2, 3], [4, 5, 6]).
+    print(running_2000("Hi {name}".format, name="Bug")) # , תחזיר הפונקציה את משך זמן הביצוע של "Hi {name}".format(name="Bug")
 
 if __name__=="__main__":
     main()
