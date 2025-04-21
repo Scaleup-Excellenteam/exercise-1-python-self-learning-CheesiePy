@@ -5,6 +5,13 @@ import sys
 def random_date_from_range(start_date="2023-07-10", end_date="2023-07-10"):
     """
     Generates a random date between start_date and end_date.
+    Args:
+    - start_date (str): The start date in YYYY-MM-DD format.
+    - end_date (str): The end date in YYYY-MM-DD format.
+    Returns:
+    - str: A random date in YYYY-MM-DD format.
+    Raises:
+    - ValueError: If the input date format is incorrect.
     """
     try:
         start = datetime.strptime(start_date, "%Y-%m-%d")
@@ -16,7 +23,18 @@ def random_date_from_range(start_date="2023-07-10", end_date="2023-07-10"):
         raise("Try YYYY-MM-DD as format for you")
 
 def no_vinnigrete():
-    """This function generates a random date between two given dates and checks if the date is a Monday."""
+    """
+    This function generates a random date between two given dates and checks if the date is a Monday.
+    output:
+    - If the date is a Monday, it prints "No Vinnigerette".
+    - If the date is not a Monday, it prints the date.
+    Args:
+    - None
+    Returns:
+    - None
+    """
+
+
     if len(sys.argv) == 3: # if you want to work it as cli tool
         start_date = sys.argv[1]
         end_date = sys.argv[2]
