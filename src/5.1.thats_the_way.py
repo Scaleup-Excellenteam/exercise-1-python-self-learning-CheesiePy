@@ -1,43 +1,23 @@
 import os
 
-def search_in_folder(dir, phrase):
-    """
-    return a list on names of files in dir that thier name that the phrase is a prefix. 
-    """
-    # validate inputs
-    if not os.path.isdir(dir):
-        raise ValueError(f"{dir} is not a valid directory")
-
-    
-    files = []
-    # the phrase is a prefix
-    for root, dirs, filenames in os.walk(dir):
-        for filename in filenames:
-            if filename.startswith(phrase):
-                files.append(filename)
-    return files
-
-
-            
-
 def thats_the_way(dir):
     """
     This function prompts the user for a directory and a phrase, then searches for files in the directory that contain the phrase.
+    Args:
+    - dir (str): The directory to search in.
+    Returns:
+    - list: A list of files in the directory that contain the phrase.
+    Raises:
+    - ValueError: If the directory is not valid.
     """
-    # dir = input("Enter the directory to search: ")
-    # phrase = input("Enter the phrase to search for: ")
     phrase = "deep"
-    try:
-        files = search_in_folder(dir, phrase)
-    except ValueError as e:
-        exit(f"Error: {e}")
+    # validate dir 
+    if not os.path.isdir(dir):
+        raise ValueError(f"{dir} is not a valid directory")
     
-    if files:
-        print(f"Files containing '{phrase}':")
-        for file in files:
-            print(file)
-    else:
-        print(f"No files found containing '{phrase}'.")
+    #return list comprehension added to get the files
+    return [f for f in os.listdir(dir) if os.path.isfile(os.path.join(dir, f)) and f.startswith(phrase)]
 
 if __name__ == "__main__":
-    thats_the_way()
+    files = thats_the_way()
+    print(f'list of files that start with the phrase "deep": {files}')
