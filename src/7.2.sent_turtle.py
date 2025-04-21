@@ -8,6 +8,16 @@ class PostOffice:
     """
 
     def __init__(self, usernames):
+    
+        # validate usernames
+        if not isinstance(usernames, list):
+            raise TypeError("Usernames must be a list.")
+        if not all(isinstance(user, str) for user in usernames):
+            raise TypeError("All usernames must be strings.")
+        if len(usernames) < 2:
+            raise ValueError("At least two usernames are required.")
+            
+
         self.message_id = 0
         self.boxes = {user: [] for user in usernames}
 
@@ -33,7 +43,7 @@ class PostOffice:
         if not isinstance(urgent, bool):
             raise TypeError("Urgency must be a boolean.")
         
-    
+
 
         user_box = self.boxes[recipient]
         self.message_id = self.message_id + 1
@@ -56,6 +66,16 @@ class PostOffice:
         :return: List of messages read.
         :rtype: list
         """
+        # Validate username
+        if username not in self.boxes:
+            raise KeyError(f"User {username} does not exist.")
+        if not isinstance(num_messages, (int, type(None))):
+            raise TypeError("num_messages must be an integer or None.")
+        if num_messages is not None and num_messages < 0:
+            raise ValueError("num_messages must be a non-negative integer.")
+        if num_messages == 0:
+            return []
+
         user_box = self.boxes[username]
         if num_messages is None:
             num_messages = len(user_box)
@@ -71,6 +91,15 @@ class PostOffice:
         :return: List of messages containing the search string.
         :rtype: list
         """
+        # Validate username
+        if username not in self.boxes:
+            raise KeyError(f"User {username} does not exist.")
+        if not isinstance(search_string, str):
+            raise TypeError("search_string must be a string.")
+        if not search_string:
+            raise ValueError("search_string cannot be empty.")
+    
+
         user_box = self.boxes[username]
         messages = [message for message in user_box if search_string in message['body']]
         return messages
