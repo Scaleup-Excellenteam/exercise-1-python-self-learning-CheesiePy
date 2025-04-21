@@ -13,7 +13,7 @@ def random_date_from_range(start_date="2023-07-10", end_date="2023-07-10"):
         random_days = random.randint(0, delta.days)
         return (start + timedelta(days=random_days)).strftime("%Y-%m-%d")
     except ValueError:
-        print("Try YYYY-MM-DD as format for you")
+        raise("Try YYYY-MM-DD as format for you")
 
 def no_vinnigrete():
     """This function generates a random date between two given dates and checks if the date is a Monday."""
