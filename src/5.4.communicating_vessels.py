@@ -1,15 +1,12 @@
+from itertools import zip_longest
 from typing import Iterable, Any, List
 
 def interleave(*args: Iterable[Any]) -> List[Any]:
     """Interleave multiple iterables."""
     res = []
     max_len = max(len(arg) for arg in args)
+    return [item for sublist in zip_longest(*args) for item in sublist]
 
-    for i in range(max_len):
-        for j in range(len(args)):
-            res.append(args[j][i])
-    
-    return res
 
 def generator_interleave(*args: Iterable[Any]) -> Iterable[Any]:
     """Generate interleaved elements from multiple iterables using a generator."""
