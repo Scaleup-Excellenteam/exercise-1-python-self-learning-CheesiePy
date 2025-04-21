@@ -7,6 +7,7 @@ def search_in_folder(dir, phrase):
     # validate inputs
     if not os.path.isdir(dir):
         raise ValueError(f"{dir} is not a valid directory")
+    
 
     files = []
     for root, dirs, filenames in os.walk(dir):
@@ -24,7 +25,11 @@ def thats_the_way(dir):
     # dir = input("Enter the directory to search: ")
     # phrase = input("Enter the phrase to search for: ")
     phrase = "deep"
-    files = search_in_folder(dir, phrase)
+    try:
+        files = search_in_folder(dir, phrase)
+    except ValueError as e:
+        exit(f"Error: {e}")
+    
     if files:
         print(f"Files containing '{phrase}':")
         for file in files:
