@@ -4,6 +4,10 @@ def search_in_folder(dir, phrase):
     """
     return a list on names of files in dir that thier name contain phrase. 
     """
+    # validate inputs
+    if not os.path.isdir(dir):
+        raise ValueError(f"{dir} is not a valid directory")
+
     files = []
     for root, dirs, filenames in os.walk(dir):
         for filename in filenames:
