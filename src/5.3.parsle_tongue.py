@@ -4,11 +4,14 @@ def parsle_tongue():
     The messages are strings of lowercase English letters that end with an exclamation mark.
     """
     secret_messages = []
+    chunck_read_flag = True
     with open("resources/logo.jpg", "rb") as file:
-        while True:
+        while flag:
             # chuck should contain at least 5 characters witch is 5*4=20 bytes
             chunk = file.read(20)
             if not chunk:
+                flag = False
+                # End of file reached
                 break
             # Decode the chunk to a string
             decoded_chunk = chunk.decode(errors='ignore')
