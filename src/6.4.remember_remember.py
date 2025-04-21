@@ -18,7 +18,6 @@ def remember_remember(path: str) -> str:
         for row in range(height):
             if img[row, col] != 255:  # non-white pixel
                 message += chr(row)
-                print(chr(row), end='')  # Print the character
     return message
 
 def main():
