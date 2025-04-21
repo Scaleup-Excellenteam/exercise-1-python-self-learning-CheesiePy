@@ -3,6 +3,15 @@ import time
 def running_2000(func, *args, **kwargs):
     """
     A decorator to measure the execution time of a function."""
+
+    if not callable(func):
+        raise ValueError("The first argument must be a callable function.")
+    if not isinstance(args, tuple):
+        raise ValueError("The second argument must be a tuple of positional arguments.")
+    if not isinstance(kwargs, dict):
+        raise ValueError("The third argument must be a dictionary of keyword arguments.")
+    
+
     start = time.time()
 
     func(*args, **kwargs)
