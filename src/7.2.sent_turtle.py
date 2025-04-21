@@ -24,6 +24,17 @@ class PostOffice:
         :rtype: int
         :raises KeyError: if the recipient does not exist.
         """
+        if recipient not in self.boxes:
+            raise KeyError(f"Recipient {recipient} does not exist.")
+        if sender not in self.boxes:
+            raise KeyError(f"Sender {sender} does not exist.")
+        if not isinstance(message_body, str):
+            raise TypeError("Message body must be a string.")
+        if not isinstance(urgent, bool):
+            raise TypeError("Urgency must be a boolean.")
+        
+    
+
         user_box = self.boxes[recipient]
         self.message_id = self.message_id + 1
         message_details = {
