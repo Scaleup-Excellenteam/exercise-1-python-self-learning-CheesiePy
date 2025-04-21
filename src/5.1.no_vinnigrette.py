@@ -31,10 +31,8 @@ def no_vinnigrete():
     Args:
     - None
     Returns:
-    - None
-    """
-
-
+    - str: A message indicating whether the date is a Monday or not.
+        """
     if len(sys.argv) == 3: # if you want to work it as cli tool
         start_date = sys.argv[1]
         end_date = sys.argv[2]
@@ -48,9 +46,9 @@ def no_vinnigrete():
     
 
     if datetime_object.weekday == 0: # moday is 0
-        print("No Vinnigerette")
+        return "No Vinnigerette"
     else:
-        print(f'{random_date}')
+        return random_date
 
 if __name__ == "__main__":
     no_vinnigrete()
